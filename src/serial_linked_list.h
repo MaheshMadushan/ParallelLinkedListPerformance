@@ -13,7 +13,7 @@ struct serial_linked_list{
     node *head;
 };
 
-bool member(struct serial_linked_list, u_int16_t);
-void insert(struct serial_linked_list, u_int16_t);
-bool delete(struct serial_linked_list, u_int16_t); // assumes data (nums) in linked list are unique
-
+bool member(struct serial_linked_list*, u_int16_t);
+void insert(struct serial_linked_list*, u_int16_t);
+bool delete(struct serial_linked_list*, u_int16_t); // assumes data (nums) in linked list are unique
+void traverseLinkeList(struct serial_linked_list*);
