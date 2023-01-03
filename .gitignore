@@ -1,0 +1,9 @@
+Makefile
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
+build/linked_list
+build/src/main.c.d
+build/src/main.c.o
+build/src/serial_linked_list.c.d
+build/src/serial_linked_list.c.o
