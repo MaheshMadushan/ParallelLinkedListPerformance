@@ -1,5 +1,6 @@
 #include "serial_linked_list.h"
 
+// assumes data (nums) in linked list are unique
 bool member(struct serial_linked_list *linked_list, u_int16_t data){
     node *temp_node = linked_list->head;
     while (temp_node)
@@ -45,11 +46,10 @@ bool delete(struct serial_linked_list *linked_list, u_int16_t data){
         temp_node = temp_node->next;
     }
     return false;
-}; // assumes data (nums) in linked list are unique
+}; 
+
 void traverseLinkeList(struct serial_linked_list* linked_list){
     node *temp_node = linked_list->head;
-
-
     while (temp_node)
     {
         printf("%d ->",temp_node->data);
