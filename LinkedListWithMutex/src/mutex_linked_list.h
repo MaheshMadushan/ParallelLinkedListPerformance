@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <pthread.h>
-
+#include <time.h>
 typedef struct node node;
 
 struct node{

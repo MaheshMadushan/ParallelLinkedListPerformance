@@ -51,7 +51,7 @@ bool delete(struct mutex_linked_list *linked_list, u_int16_t data){
         prev_node = temp_node;
         temp_node = temp_node->next;
     }
-    pthread_mutex_unlock(&linked_list->mutex);
+    // pthread_mutex_unlock(&linked_list->mutex);
     return false;
 }; 
 
