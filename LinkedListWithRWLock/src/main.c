@@ -1,10 +1,10 @@
-#include "mutex_linked_list.h"
+#include "rwlock_linked_list.h"
 bool is950deleted = false;
 bool is500Member = false;
 bool is800Member = false;
 int main(){
     struct mutex_linked_list *linked_list = malloc(sizeof(struct mutex_linked_list));
-    // pthread_mutex_init(&linked_list->mutex,NULL);
+    // pthread_mutex_init(&linked_list->lock,NULL);
     for (u_int16_t i = 0; i < 1000; i++)
     {
         insert(linked_list,i);

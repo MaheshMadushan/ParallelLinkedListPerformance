@@ -18,3 +18,8 @@ SerialLinkedList/build/src/main.c.d
 SerialLinkedList/build/src/main.c.o
 SerialLinkedList/build/src/serial_linked_list.c.d
 SerialLinkedList/build/src/serial_linked_list.c.o
+LinkedListWithRWLock/build/rwlock_linked_list
+LinkedListWithRWLock/build/src/main.c.d
+LinkedListWithRWLock/build/src/main.c.o
+LinkedListWithRWLock/build/src/rwlock_linked_list.c.d
+LinkedListWithRWLock/build/src/rwlock_linked_list.c.o

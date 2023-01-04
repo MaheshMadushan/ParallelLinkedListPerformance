@@ -11,7 +11,7 @@ struct node{
 };
 
 struct mutex_linked_list{
-    pthread_mutex_t mutex;
+    pthread_rwlock_t lock;
     node *head;
     node *tail;
 };
