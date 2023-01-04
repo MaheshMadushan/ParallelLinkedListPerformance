@@ -3,12 +3,7 @@
 #include <stdbool.h>
 #include <pthread.h>
 #include <time.h>
-typedef struct node node;
-
-struct node{
-    u_int16_t data;
-    node *next;
-};
+#include "linked_list.h"
 
 struct mutex_linked_list{
     pthread_mutex_t lock;
@@ -16,7 +11,7 @@ struct mutex_linked_list{
     node *tail;
 };
 
-bool member(struct mutex_linked_list*, u_int16_t);
-void insert(struct mutex_linked_list*, u_int16_t);
-bool delete(struct mutex_linked_list*, u_int16_t); // assumes data (nums) in linked list are unique
-void traverseLinkeList(struct mutex_linked_list*);
+bool mutex_linked_list_member(struct mutex_linked_list*, u_int16_t);
+void mutex_linked_list_insert(struct mutex_linked_list*, u_int16_t);
+bool mutex_linked_list_delete(struct mutex_linked_list*, u_int16_t); // assumes data (nums) in linked list are unique
+void mutex_linked_list_traverseLinkedList(struct mutex_linked_list*);

@@ -1,7 +1,7 @@
 #include "mutex_linked_list.h"
 
 // assumes data (nums) in linked list are unique
-bool member(struct mutex_linked_list *linked_list, u_int16_t data){
+bool mutex_linked_list_member(struct mutex_linked_list *linked_list, u_int16_t data){
     node *temp_node = linked_list->head;
     while (temp_node)
     {
@@ -13,7 +13,7 @@ bool member(struct mutex_linked_list *linked_list, u_int16_t data){
     return false;
 };
 
-void insert(struct mutex_linked_list *linked_list, u_int16_t data){
+void mutex_linked_list_insert(struct mutex_linked_list *linked_list, u_int16_t data){
     pthread_mutex_lock(&linked_list->lock);
     if(linked_list->head == NULL){
         linked_list->head = malloc(sizeof(struct node));
@@ -31,7 +31,7 @@ void insert(struct mutex_linked_list *linked_list, u_int16_t data){
     pthread_mutex_unlock(&linked_list->lock);
 };
 
-bool delete(struct mutex_linked_list *linked_list, u_int16_t data){
+bool mutex_linked_list_delete(struct mutex_linked_list *linked_list, u_int16_t data){
     pthread_mutex_lock(&linked_list->lock);
     node *temp_node = linked_list->head;
     node *prev_node = NULL;
@@ -55,7 +55,7 @@ bool delete(struct mutex_linked_list *linked_list, u_int16_t data){
     return false;
 }; 
 
-void traverseLinkeList(struct mutex_linked_list* linked_list){
+void mutex_linked_list_traverseLinkedList(struct mutex_linked_list* linked_list){
     node *temp_node = linked_list->head;
     while (temp_node)
     {

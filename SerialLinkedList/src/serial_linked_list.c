@@ -1,7 +1,7 @@
 #include "serial_linked_list.h"
 
 // assumes data (nums) in linked list are unique
-bool member(struct serial_linked_list *linked_list, u_int16_t data){
+bool serial_linked_list_member(struct serial_linked_list *linked_list, u_int16_t data){
 
     node *temp_node = linked_list->head;
 
@@ -14,7 +14,7 @@ bool member(struct serial_linked_list *linked_list, u_int16_t data){
     return false;
 };
 
-void insert(struct serial_linked_list *linked_list, u_int16_t data){
+void serial_linked_list_insert(struct serial_linked_list *linked_list, u_int16_t data){
 
     if(linked_list->head == NULL){
         linked_list->head = malloc(sizeof(struct node));
@@ -30,7 +30,7 @@ void insert(struct serial_linked_list *linked_list, u_int16_t data){
     linked_list->tail = linked_list->tail->next;
 };
 
-bool delete(struct serial_linked_list *linked_list, u_int16_t data){
+bool serial_linked_list_delete(struct serial_linked_list *linked_list, u_int16_t data){
 
     node *temp_node = linked_list->head;
     node *prev_node = NULL;
@@ -52,7 +52,7 @@ bool delete(struct serial_linked_list *linked_list, u_int16_t data){
 
     return false;
 }; 
-void traverseLinkeList(struct serial_linked_list* linked_list){
+void serial_linked_list_traverseLinkedList(struct serial_linked_list* linked_list){
     node *temp_node = linked_list->head;
     while (temp_node)
     {

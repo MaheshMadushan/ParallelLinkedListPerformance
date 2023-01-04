@@ -1,7 +1,7 @@
 #include "rwlock_linked_list.h"
 
 // assumes data (nums) in linked list are unique
-bool member(struct mutex_linked_list *linked_list, u_int16_t data){
+bool rwlock_linked_list_member(struct rwlock_linked_list *linked_list, u_int16_t data){
     pthread_rwlock_rdlock(&linked_list->lock);
     node *temp_node = linked_list->head;
 
@@ -18,7 +18,7 @@ bool member(struct mutex_linked_list *linked_list, u_int16_t data){
     return false;
 };
 
-void insert(struct mutex_linked_list *linked_list, u_int16_t data){
+void rwlock_linked_list_insert(struct rwlock_linked_list *linked_list, u_int16_t data){
 
     pthread_rwlock_wrlock(&linked_list->lock);
 
@@ -39,7 +39,7 @@ void insert(struct mutex_linked_list *linked_list, u_int16_t data){
 
 };
 
-bool delete(struct mutex_linked_list *linked_list, u_int16_t data){
+bool rwlock_linked_list_delete(struct rwlock_linked_list *linked_list, u_int16_t data){
 
     pthread_rwlock_wrlock(&linked_list->lock);
     node *temp_node = linked_list->head;
@@ -66,7 +66,7 @@ bool delete(struct mutex_linked_list *linked_list, u_int16_t data){
     return false;
 }; 
 
-void traverseLinkeList(struct mutex_linked_list* linked_list){
+void rwlock_linked_list_traverseLinkedList(struct rwlock_linked_list* linked_list){
 
     node *temp_node = linked_list->head;
 
