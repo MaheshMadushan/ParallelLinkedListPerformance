@@ -11,6 +11,7 @@ struct node{
 
 struct serial_linked_list{
     node *head;
+    node *tail;
 };
 
 bool member(struct serial_linked_list*, u_int16_t);

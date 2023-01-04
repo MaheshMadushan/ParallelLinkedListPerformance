@@ -7,3 +7,14 @@ build/src/main.c.d
 build/src/main.c.o
 build/src/serial_linked_list.c.d
 build/src/serial_linked_list.c.o
+LinkedListWithMutex/build/linked_list
+LinkedListWithMutex/build/src/main.c.d
+LinkedListWithMutex/build/src/main.c.o
+LinkedListWithMutex/build/src/mutex_linked_list.c.d
+LinkedListWithMutex/build/src/mutex_linked_list.c.o
+LinkedListWithMutex/build/mutex_linked_list
+SerialLinkedList/build/linked_list
+SerialLinkedList/build/src/main.c.d
+SerialLinkedList/build/src/main.c.o
+SerialLinkedList/build/src/serial_linked_list.c.d
+SerialLinkedList/build/src/serial_linked_list.c.o

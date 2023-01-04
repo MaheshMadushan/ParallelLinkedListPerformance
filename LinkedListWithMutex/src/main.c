@@ -1,10 +1,11 @@
-#include "serial_linked_list.h"
+#include "mutex_linked_list.h"
 bool is950deleted = false;
 bool is500Member = false;
 bool is800Member = false;
 int main(){
-    struct serial_linked_list *linked_list = malloc(sizeof(struct serial_linked_list));
-    for (u_int16_t i = 0; i < 100; i++)
+    struct mutex_linked_list *linked_list = malloc(sizeof(struct mutex_linked_list));
+    // pthread_mutex_init(&linked_list->mutex,NULL);
+    for (u_int16_t i = 0; i < 1000; i++)
     {
         insert(linked_list,i);
     }
