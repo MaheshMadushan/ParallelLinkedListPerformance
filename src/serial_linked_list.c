@@ -10,24 +10,19 @@ bool member(struct serial_linked_list *linked_list, u_int16_t data){
     }
     return false;
 };
-
 void insert(struct serial_linked_list *linked_list, u_int16_t data){
-    node *temp_node = linked_list->head;
-    if(temp_node == NULL){
+    node *ptr_to_node = linked_list->head;
+    if(ptr_to_node == NULL){
         linked_list->head = malloc(sizeof(struct node));
         linked_list->head->data = data;
         linked_list->head->next = NULL;
         return;
     }
-    while (temp_node->next)
-    {
-        temp_node = temp_node->next;
-    }
-    temp_node->next = malloc(sizeof(struct node));
-    temp_node->next->data = data;
-    temp_node->next->next = NULL;
+    while (ptr_to_node->next){ ptr_to_node = ptr_to_node->next; }
+    ptr_to_node->next = malloc(sizeof(struct node));
+    ptr_to_node->next->data = data;
+    ptr_to_node->next->next = NULL;
 };
-
 bool delete(struct serial_linked_list *linked_list, u_int16_t data){
     node *temp_node = linked_list->head;
     node *prev_node = NULL;
@@ -47,7 +42,6 @@ bool delete(struct serial_linked_list *linked_list, u_int16_t data){
     }
     return false;
 }; 
-
 void traverseLinkeList(struct serial_linked_list* linked_list){
     node *temp_node = linked_list->head;
     while (temp_node)
@@ -55,5 +49,5 @@ void traverseLinkeList(struct serial_linked_list* linked_list){
         printf("%d ->",temp_node->data);
         temp_node = temp_node->next;
     }
-    
+    printf("\n");
 };

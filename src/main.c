@@ -4,7 +4,7 @@ bool is500Member = false;
 bool is800Member = false;
 int main(){
     struct serial_linked_list *linked_list = malloc(sizeof(struct serial_linked_list));
-    for (size_t i = 0; i < 1000; i++)
+    for (u_int16_t i = 0; i < 100; i++)
     {
         insert(linked_list,i);
     }
