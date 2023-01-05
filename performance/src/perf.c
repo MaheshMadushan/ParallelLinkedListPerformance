@@ -106,7 +106,7 @@ int main(int arg_count, char* argv[]){
     long long end_time_in_us = te.tv_usec;
 
     // calculate execution time
-    printf("execution time %lld us\n",end_time_in_us - start_time_in_us);
+    printf("execution time rw locked linked list %lld us\n",end_time_in_us - start_time_in_us);
 
     gettimeofday(&te, NULL);
     start_time_in_us = te.tv_usec;
@@ -130,7 +130,7 @@ int main(int arg_count, char* argv[]){
     end_time_in_us = te.tv_usec;
 
     // calculate execution time
-    printf("execution time %lld us\n",end_time_in_us - start_time_in_us);
+    printf("execution time of mutex linked list %lld us\n",end_time_in_us - start_time_in_us);
     
     gettimeofday(&te, NULL);
     start_time_in_us = te.tv_usec;
@@ -148,7 +148,7 @@ int main(int arg_count, char* argv[]){
         pthread_create(&thread_handles[thread_id], NULL, (void*) serial_thread_worker, (void *) serial_thread_data);
     }
     
-    for(thread_id = 0; thread_id < thread_count; thread_id++){
+    for(thread_id = 0; thread_id < 1; thread_id++){
         pthread_join(thread_handles[thread_id], NULL);
     }
 
@@ -156,7 +156,7 @@ int main(int arg_count, char* argv[]){
      end_time_in_us = te.tv_usec;
 
     // calculate execution time
-    printf("execution time %lld us\n",end_time_in_us - start_time_in_us);
+    printf("execution time of %lld us\n",end_time_in_us - start_time_in_us);
     free(thread_handles);
     return 0;
 }

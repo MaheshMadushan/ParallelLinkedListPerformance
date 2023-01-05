@@ -1,6 +1,5 @@
 #include "mutex_linked_list.h"
 
-// assumes data (nums) in linked list are unique
 bool mutex_linked_list_member(struct mutex_linked_list *linked_list, u_int16_t data){
     node *temp_node = linked_list->head;
     while (temp_node)
@@ -33,23 +32,24 @@ void mutex_linked_list_insert(struct mutex_linked_list *linked_list, u_int16_t d
 
 bool mutex_linked_list_delete(struct mutex_linked_list *linked_list, u_int16_t data){
     pthread_mutex_lock(&linked_list->lock);
-    node *temp_node = linked_list->head;
-    node *prev_node = NULL;
+    node **temp_node = &linked_list->head;
+    node **next_node = &(*temp_node)->next;
     while (temp_node)
     {
-        if(temp_node->data == data){
-            if(temp_node->next == NULL){
-                prev_node->next = NULL;
-                pthread_mutex_unlock(&linked_list->lock);
-                return true;
-            }
-            prev_node->next = temp_node->next->next;
-            free(temp_node->next);
+        
+        if((*temp_node)->data == data){
+            node *free_this_node = *temp_node;
+            *temp_node = *next_node;
+            free(free_this_node);
             pthread_mutex_unlock(&linked_list->lock);
             return true;
         }
-        prev_node = temp_node;
-        temp_node = temp_node->next;
+        if((*temp_node)->next == NULL){
+            temp_node = NULL;
+            continue;
+        }
+        temp_node = &(*temp_node)->next;
+        next_node = &(*temp_node)->next;
     }
     pthread_mutex_unlock(&linked_list->lock);
     return false;

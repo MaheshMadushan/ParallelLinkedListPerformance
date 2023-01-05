@@ -13,7 +13,7 @@
 //     printf("num 950 is exist and now deleted ? : %s\n", (is950deleted ? "true":"false"));
 //     is500Member = mutex_linked_list_member(linked_list,500);
 //     printf("num 500 is member ? : %s\n",(is500Member ? "true":"false"));
-//     is800Member = mutex_linked_list_member(linked_list,800);
+//     is800Member = mutex_linked_list_member(linked_list,9899);
 //     printf("num 800 is member ? : %s\n",(is800Member ? "true":"false"));
 //     mutex_linked_list_traverseLinkedList(linked_list);
 //     return 0;
