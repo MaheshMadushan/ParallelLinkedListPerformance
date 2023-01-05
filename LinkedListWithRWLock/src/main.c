@@ -13,8 +13,8 @@
 //     printf("num 950 is exist and now deleted ? : %s\n", (is950deleted ? "true":"false"));
 //     is500Member = rwlock_linked_list_member(linked_list,500);
 //     printf("num 500 is member ? : %s\n",(is500Member ? "true":"false"));
-//     is800Member = rwlock_linked_list_member(linked_list,800);
-//     printf("num 800 is member ? : %s\n",(is800Member ? "true":"false"));
+//     is800Member = rwlock_linked_list_member(linked_list,950);
+//     printf("num 950 is member ? : %s\n",(is800Member ? "true":"false"));
 //     rwlock_linked_list_traverseLinkedList(linked_list);
 //     return 0;
 // }

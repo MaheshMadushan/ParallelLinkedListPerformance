@@ -52,7 +52,7 @@ int main(int arg_count, char* argv[]){
         struct thread_data *thread_data = malloc(sizeof(struct thread_data));
 
         thread_data->linked_list = linked_list;
-        thread_data->ops = 1000;
+        thread_data->ops = 10000;
         thread_data->thread_count = thread_count;
         thread_data->thread_id = thread_id;
         
@@ -75,19 +75,37 @@ int main(int arg_count, char* argv[]){
 void* thread_worker(void* void_Type_thread_arguments){
 
     struct thread_data *thread_arguments = (struct thread_data*) void_Type_thread_arguments;
-    u_int16_t ops = thread_arguments->ops;
+    u_int16_t member_ops = thread_arguments->ops * 0.99;
+    u_int16_t insert_ops = thread_arguments->ops * 0.05;
+    u_int16_t delete_ops = thread_arguments->ops * 0.05;
     u_int16_t thread_id = thread_arguments->thread_id;
     u_int16_t thread_count = thread_arguments->thread_count;
 
-    int start = thread_id * (ops / thread_count) + 1;
-    int end = start + (ops / thread_count) - 1;
+    int member_ops_start = thread_id * (member_ops / thread_count) + 1;
+    int member_ops_end = member_ops_start + (member_ops / thread_count) - 1;
+
+    int insert_ops_start = thread_id * (insert_ops / thread_count) + 1;
+    int insert_ops_end = insert_ops_start + (insert_ops / thread_count) - 1;
+
+    int delete_ops_start = thread_id * (delete_ops / thread_count) + 1;
+    int delete_ops_end = delete_ops_start + (delete_ops / thread_count) - 1;
     
     printf("thread id : %d, thread count : %d, ",thread_id,thread_count);
-    printf("start : %d, end : %d, workload of thread: %d, full workload : %d\n",start,end,end-start,ops );
+    printf("member() function workload: %d ops, insert() function workload: %d ops, delete() function workload: %d ops\n",member_ops_end-member_ops_start,insert_ops_end-insert_ops_start,delete_ops_end-delete_ops_start);
 
-    for (u_int16_t i = start; i < end; i++)
+    for (u_int16_t i = member_ops_start; i < member_ops_end; i++)
     {
         rwlock_linked_list_member(thread_arguments->linked_list,random_nums[i % 1000]);
+    }
+
+    for (u_int16_t i = insert_ops_start; i < insert_ops_end; i++)
+    {
+        rwlock_linked_list_insert(thread_arguments->linked_list,random_nums[i % 1000]);
+    }
+
+    for (u_int16_t i = delete_ops_start; i < delete_ops_end; i++)
+    {
+        rwlock_linked_list_delete(thread_arguments->linked_list,random_nums[i % 1000]);
     }
 
     return NULL;
