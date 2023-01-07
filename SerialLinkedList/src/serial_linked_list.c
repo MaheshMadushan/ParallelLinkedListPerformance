@@ -39,7 +39,7 @@ bool serial_linked_list_delete(struct serial_linked_list *linked_list, u_int16_t
         if((*temp_node) == NULL) printf("%d\n",(*temp_node) == NULL);
         if((*temp_node)->data == data){
             node *free_this_node = *temp_node;
-            *temp_node = next_node;
+            *temp_node = *next_node;
             free(free_this_node);
             return true;
         }
