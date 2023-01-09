@@ -1,7 +1,8 @@
 #include "mutex_linked_list.h"
 #include "rwlock_linked_list.h"
-#include "serial_linked_list.h" 
-#define SAMPLES_PER_WORKLOAD 50
+#include "serial_linked_list.h"
+#include <math.h> 
+#define SAMPLES_PER_WORKLOAD 97
 #define NUM_OF_OPS 10000
 int thread_count = 0;
 int random_nums[10000];
@@ -88,6 +89,16 @@ int main(int arg_count, char* argv[]){
         
         // for calculating standard deviation and avg
         double sum_of_execution_times = 0;
+        double squared_sum = 0;
+        double mean = 0;
+        double std = 0;
+        double execution_times_arr[SAMPLES_PER_WORKLOAD];
+        // initializing arr
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            execution_times_arr[i] = 0;
+        }
+        
 
         // trials for a given workload
         for(int trial = 0; trial < SAMPLES_PER_WORKLOAD; trial++)
@@ -129,12 +140,27 @@ int main(int arg_count, char* argv[]){
 
             // calculate execution time
             double execution_time_ms = (end_time_in_us - start_time_in_us) / 1000;
-            if(execution_time_ms > 0) sum_of_execution_times += execution_time_ms;
+            if(execution_time_ms > 0){ execution_times_arr[trial] = execution_time_ms;}
 #ifdef DEBUG
             printf("execution time rw locked linked list for work load {%f,%f,%f} : %lld ms\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],execution_time_ms);
 #endif
         }
-        printf("avg execution time for rwlocked linked list for work load {%f,%f,%f}: %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],sum_of_execution_times / SAMPLES_PER_WORKLOAD);
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            sum_of_execution_times += execution_times_arr[i];            
+        }
+
+
+        mean = sum_of_execution_times / SAMPLES_PER_WORKLOAD;
+
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            squared_sum += (execution_times_arr[i] - mean) * (execution_times_arr[i] - mean);
+        }
+
+        std = sqrt(squared_sum / SAMPLES_PER_WORKLOAD);
+        
+        printf("avg execution time and std for rwlocked linked list for workload {%f,%f,%f}: %lf , %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],mean,std);
     }
     printf("\n");
 
@@ -145,6 +171,15 @@ int main(int arg_count, char* argv[]){
         
         // for calculating standard deviation and avg
         double sum_of_execution_times = 0;
+        double squared_sum = 0;
+        double mean = 0;
+        double std = 0;
+        double execution_times_arr[SAMPLES_PER_WORKLOAD];
+        // initializing arr
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            execution_times_arr[i] = 0;
+        }
 
         // trials for a given workload
         for(int trial = 0; trial < SAMPLES_PER_WORKLOAD; trial++)
@@ -182,12 +217,27 @@ int main(int arg_count, char* argv[]){
 
             // calculate execution time
             double execution_time_ms = (end_time_in_us - start_time_in_us) / 1000;
-            if(execution_time_ms > 0) sum_of_execution_times += execution_time_ms;
+            if(execution_time_ms > 0){ execution_times_arr[trial] = execution_time_ms;}
 #ifdef DEBUG
             printf("execution time mutex locked linked list for work load {%f,%f,%f} : %lld ms\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],execution_time_ms);
 #endif        
         }
-        printf("avg execution time of mutex locked linked list for workload {%f,%f,%f} : %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],sum_of_execution_times / SAMPLES_PER_WORKLOAD);
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            sum_of_execution_times += execution_times_arr[i];            
+        }
+
+
+        mean = sum_of_execution_times / SAMPLES_PER_WORKLOAD;
+
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            squared_sum += (execution_times_arr[i] - mean) * (execution_times_arr[i] - mean);
+        }
+
+        std = sqrt(squared_sum / SAMPLES_PER_WORKLOAD);
+        
+        printf("avg execution time and std for rwlocked linked list for workload  {%f,%f,%f} : %lf , %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],mean,std);
     }
     printf("\n");
     
@@ -198,6 +248,15 @@ int main(int arg_count, char* argv[]){
 
         // for calculating standard deviation and avg
         double sum_of_execution_times = 0;
+        double squared_sum = 0;
+        double mean = 0;
+        double std = 0;
+        double execution_times_arr[SAMPLES_PER_WORKLOAD];
+        // initializing arr
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            execution_times_arr[i] = 0;
+        }
        
        // trials for a given workload
         for(int trial = 0; trial < SAMPLES_PER_WORKLOAD; trial++){
@@ -232,12 +291,27 @@ int main(int arg_count, char* argv[]){
 
             // calculate execution time
             double execution_time_ms = (end_time_in_us - start_time_in_us) / 1000;
-            if(execution_time_ms > 0) sum_of_execution_times += execution_time_ms;
+            if(execution_time_ms > 0){ execution_times_arr[trial] = execution_time_ms;}
 #ifdef DEBUG
             printf("execution time serial linked list for work load {%f,%f,%f} : %lld ms\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],execution_time_ms);
 #endif
         }
-        printf("avg execution time of serial linked list for workload {%f,%f,%f} : %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],sum_of_execution_times / SAMPLES_PER_WORKLOAD);
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            sum_of_execution_times += execution_times_arr[i];            
+        }
+
+
+        mean = sum_of_execution_times / SAMPLES_PER_WORKLOAD;
+
+        for (int i = 0; i < SAMPLES_PER_WORKLOAD; i++)
+        {
+            squared_sum += (execution_times_arr[i] - mean) * (execution_times_arr[i] - mean);
+        }
+
+        std = sqrt(squared_sum / SAMPLES_PER_WORKLOAD);
+
+        printf("avg execution time and std of serial linked list for workload {%f,%f,%f} : %lf , %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],mean,std);
     }
     
     // //==========================================================================================================
