@@ -237,7 +237,7 @@ int main(int arg_count, char* argv[]){
 
         std = sqrt(squared_sum / SAMPLES_PER_WORKLOAD);
         
-        printf("avg execution time and std for rwlocked linked list for workload  {%f,%f,%f} : %lf , %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],mean,std);
+        printf("avg execution time and std for mutex locked linked list for workload  {%f,%f,%f} : %lf , %lf\n",work_loads[i][0],work_loads[i][1],work_loads[i][2],mean,std);
     }
     printf("\n");
     
