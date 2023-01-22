@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "serial_linked_list.h": "c",
+        "mutex_linked_list.h": "c",
+        "rwlock_linked_list.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "linked_list.h": "c"
+    }
+}
