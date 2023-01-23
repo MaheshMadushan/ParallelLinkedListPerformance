@@ -2,7 +2,7 @@
 #include "rwlock_linked_list.h"
 #include "serial_linked_list.h"
 #include <math.h> 
-#define SAMPLES_PER_WORKLOAD 97
+#define SAMPLES_PER_WORKLOAD 385
 #define NUM_OF_OPS 10000
 int thread_count = 0;
 int random_nums[10000];

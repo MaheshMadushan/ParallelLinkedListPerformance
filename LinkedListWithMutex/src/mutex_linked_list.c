@@ -1,14 +1,17 @@
 #include "mutex_linked_list.h"
 
 bool mutex_linked_list_member(struct mutex_linked_list *linked_list, u_int16_t data){
+    pthread_mutex_lock(&linked_list->lock);
     node *temp_node = linked_list->head;
     while (temp_node)
     {
         if(temp_node->data == data){ 
+            pthread_mutex_unlock(&linked_list->lock);
             return true; 
         }
         temp_node = temp_node->next;
     }
+    pthread_mutex_unlock(&linked_list->lock);
     return false;
 };
 
