@@ -1,4 +1,4 @@
-# Linked List Performance comparison (serial linked list, mutex locked linked list, rwlocked linked list)
+# Linked List Performance comparison (serial linked list, mutex locked linked list, rwlocked linked list) - time in miliseconds
 ![image](https://user-images.githubusercontent.com/58337761/219942941-c034b859-2868-4ab5-a219-81176d0ece27.png)
 ![image](https://user-images.githubusercontent.com/58337761/219942952-4a6f35d7-ff27-4545-b57e-7eb2a238d4e8.png)
 ![image](https://user-images.githubusercontent.com/58337761/219942957-a7f20f7f-29a7-49f9-a61e-006ecc87eadb.png)
